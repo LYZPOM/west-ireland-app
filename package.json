@@ -58,8 +58,8 @@
     "moment": "^2.18.1"
   },
   "scripts": {
-    "build" : "gulp build",
-    "start": "node app.js"
+    "postinstall": "bower install && gulp build",
+    "start": "gulp serve"
   },
   "devDependencies": {
     "estraverse": "~4.1.0",
