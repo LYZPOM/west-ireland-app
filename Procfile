@@ -1,1 +1,1 @@
-web: gulp serve
+worker: gulp serve
