@@ -3,7 +3,31 @@ window.onload = function(){
      if(mapSection!=null){
        initMap();
      }
+     initNavBar();
 };
+
+function initNavBar(){
+  $(".mdl-layout__drawer-button" ).click(function() {
+    $(".mdl-layout__drawer-button").attr("aria-expanded",true);
+    $(".mdl-layout__drawer").attr("aria-hidden",false);
+    $(".mdl-layout__drawer").addClass("is-visible");
+    $(".mdl-layout__obfuscator").addClass("is-visible");
+  });
+
+  $(document).mouseup(function(e)
+  {
+      var container = $(".mdl-layout__drawer");
+      // if the target of the click isn't the container nor a descendant of the container
+      if (!container.is(e.target) && container.has(e.target).length === 0)
+      {
+        $(".mdl-layout__drawer-button").attr("aria-expanded",false);
+        $(".mdl-layout__drawer").attr("aria-hidden",true);
+        $(".mdl-layout__drawer").removeClass("is-visible");
+        $(".mdl-layout__obfuscator").removeClass("is-visible");
+      }
+  });
+}
+
 function initMap() {
         var myLatlng = {lat: 53.72387639999999, lng: -9.00173559999996};
 
