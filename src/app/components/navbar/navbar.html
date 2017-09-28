@@ -1,9 +1,62 @@
-<div class="android-navigation-container">
-  <nav ng-controller="NavbarController as nav" class="android-navigation mdl-navigation">
-    <a class="nounderline mdl-navigation__link mdl-typography--text-uppercase" href="#">{{"Home" | translate}}</a>
-    <a class="nounderline mdl-navigation__link mdl-typography--text-uppercase" ui-sref="activity">{{"Adventures" | translate}}</a>
-<a class="nounderline mdl-navigation__link mdl-typography--text-uppercase" ui-sref="activity">{{"Our Team" | translate}}</a>
-    <a class="nounderline mdl-navigation__link mdl-typography--text-uppercase" href="">{{"Contact" | translate}}</a>
-    <a class="nounderline mdl-navigation__link mdl-typography--text-uppercase" href="">{{"Help" | translate}}</a>
-  </nav>
+<div ng-switch on="vm.showNav">
+  <div class="android-header mdl-layout__header mdl-layout__header--waterfall" ng-switch-when="true">
+    <div aria-expanded="false" role="button" tabindex="0" class="mdl-layout__drawer-button">
+      <i class="material-icons"></i>
+    </div>
+    <div class="mdl-layout__header-row">
+      <span class="android-title mdl-layout-title">
+        <img class="android-logo-image" src="assets/images/westIreland-logo.png">
+      </span>
+      <!-- Add spacer, to align navigation to the right in desktop -->
+      <div class="android-header-spacer mdl-layout-spacer"></div>
+      <div class="android-search-box mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right mdl-textfield--full-width">
+        <label class="mdl-button mdl-js-button mdl-button--icon" for="search-field">
+          <i class="material-icons">search</i>
+        </label>
+        <div class="mdl-textfield__expandable-holder">
+          <input class="mdl-textfield__input" type="text" id="search-field">
+        </div>
+      </div>
+      <!-- Navigation -->
+      <div class="android-navigation-container" >
+        <nav ng-controller="NavbarController as nav" class="android-navigation mdl-navigation">
+          <a class="nounderline mdl-navigation__link mdl-typography--text-uppercase" href="#">{{"Home" | translate}}</a>
+          <a class="nounderline mdl-navigation__link mdl-typography--text-uppercase" ui-sref="activity">{{"Adventures" | translate}}</a>
+          <a class="nounderline mdl-navigation__link mdl-typography--text-uppercase" ui-sref="activity">{{"Our Team" | translate}}</a>
+          <a class="nounderline mdl-navigation__link mdl-typography--text-uppercase" href="">{{"Contact" | translate}}</a>
+          <a class="nounderline mdl-navigation__link mdl-typography--text-uppercase" href="">{{"Help" | translate}}</a>
+        </nav>
+      </div>
+      <span class="android-mobile-title mdl-layout-title">
+        <img class="android-logo-image" src="assets/images/westIreland-logo.png">
+      </span>
+    </div>
+  </div>
+  <div class="android-drawer mdl-layout__drawer" ng-switch-when="false">
+    <span class="mdl-layout-title">
+      <img class="android-logo-image" src="assets/images/westIreland-logo-white.png">
+    </span>
+    <nav class="mdl-navigation">
+      <a class="mdl-navigation__link" href="">Home</a>
+      <a class="mdl-navigation__link" href="">Adeventures</a>
+      <a class="mdl-navigation__link" href="">Our Team</a>
+      <a class="mdl-navigation__link" href="">Contact</a>
+      <a class="mdl-navigation__link" href="">Help</a>
+      <div class="android-drawer-separator"></div>
+      <span class="mdl-navigation__link" href="">Videos</span>
+      <a class="mdl-navigation__link" href="">Surfing</a>
+      <a class="mdl-navigation__link" href="">Cycling</a>
+      <a class="mdl-navigation__link" href="">SUP</a>
+      <a class="mdl-navigation__link" href="">Horse Riding</a>
+      <div class="android-drawer-separator"></div>
+      <span class="mdl-navigation__link" href="">Packages</span>
+      <a class="mdl-navigation__link" href="">Stag</a>
+      <a class="mdl-navigation__link" href="">Hen</a>
+      <a class="mdl-navigation__link" href="">Family</a>
+      <div class="android-drawer-separator"></div>
+      <span class="mdl-navigation__link" href="">Team</span>
+      <a class="mdl-navigation__link" href="">Elvis of Surf Mayo</a>
+      <a class="mdl-navigation__link" href="">Muirti of Stand Up Paddle SUP Old Head</a>
+    </nav>
+  </div>
 </div>
