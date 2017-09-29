@@ -39,7 +39,7 @@ function browserSyncInit(baseDir, browser) {
     startPath: '/',
     server: server,
     browser: browser,
-    port: process.env.PORT
+    port: process.env.PORT || 3000
   });
 }
 

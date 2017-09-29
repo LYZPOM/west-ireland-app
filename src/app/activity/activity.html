@@ -1,64 +1,65 @@
 <div class="mdl-layout__container">
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-  <acme-navbar show-nav="true"></acme-navbar>
-  <acme-navbar show-nav="false"></acme-navbar>
-  <div ng-controller="PopupController">
-    <img class="shopping-cart-image" src="assets/images/shopping-cart.jpeg" />
-    <button class="btn shopping-cart-text"><a href="" ng-click="open()" ><ngcart-summary></ngcart-summary></a></button>
-  </div>
+	<acme-navbar show-nav="true"></acme-navbar>
+	<acme-navbar show-nav="false"></acme-navbar>
+	<div ng-controller="PopupController">
+		<img class="shopping-cart-image" src="assets/images/shopping-cart.jpeg" />
+		<button class="btn shopping-cart-text"><a href="" ng-click="open()" ><ngcart-summary></ngcart-summary></a></button>
+	</div>
 <div class="android-content mdl-layout__content">
 <a name="top"></a>
 <div class="site-content">
-   <div class="container" ng-controller="ShopCartController">
-      <div class="mdl-grid site-max-width" ng-controller="ActivityController as activity">
-         <div class="mdl-cell mdl-card mdl-shadow--4dp portfolio-card" ng-repeat="item in activity.items">
-            <div class="mdl-card__media">
-               <img class="article-image" ng-src="{{item.imagepath}}" border="0" alt="">
-            </div>
-            <div class="mdl-card__title">
-               <h2 class="mdl-card__title-text">{{item.name}}</h2>
-            </div>
-            <div class="mdl-card__supporting-text mdl-cart">
-                  {{item.description}}
-            </div>
-            <div class="mdl-card__supporting-text mdl-cart">
-                Price :  €{{item.price}}
-            </div>
-            <br>
-            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="portfolio-page.html">
-              Learn More
-            </a>
-            <div class="mdl-card__actions mdl-card--border">
-               <ngcart-addtocart id="{{$index}}" name="{{item.name}}" price="{{item.price}}" quantity="1" quantity-max="5">Add to Cart</ngcart-addtocart>
-            </div>
-         </div>
-      </div>
-   </div>
+	 <div class="container" ng-controller="ShopCartController">
+			<div class="mdl-grid site-max-width" ng-controller="ActivityController as activity">
+				 <div class="mdl-cell mdl-card mdl-shadow--4dp portfolio-card" ng-repeat="item in activity.items">
+						<div class="mdl-card__media">
+							 <img class="article-image" ng-src="{{item.imagepath}}" border="0" alt="">
+						</div>
+						<div class="mdl-card__title">
+							 <h2 class="mdl-card__title-text">{{item.name}}</h2>
+						</div>
+						<div class="mdl-card__supporting-text mdl-cart">
+									{{item.description}}
+						</div>
+						<div class="mdl-card__supporting-text mdl-cart">
+								Price :  €{{item.price}}
+						</div>
+						<br>
+						<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="portfolio-page.html">
+							Learn More
+						</a>
+						<div class="mdl-card__actions mdl-card--border">
+							 <ngcart-addtocart id="{{$index}}" name="{{item.name}}" price="{{item.price}}" quantity="1" quantity-max="5">Add to Cart</ngcart-addtocart>
+						</div>
+				 </div>
+			</div>
+	 </div>
 </div>
 <acme-Footer></acme-Footer>
 </div>
+<div class="mdl-layout__obfuscator"></div>
 </div>
 </div>
 <script type="text/ng-template" id="template/ngCart/addtocart.html">
-  <div ng-hide="attrs.id">
-    <a class="btn btn-lg btn-primary" ng-disabled="true" ng-transclude></a>
-  </div>
-  <div ng-show="attrs.id">
-    <div>
-      <span ng-show="quantityMax">
-        <select name="quantity" id="quantity" ng-model="q" ng-options=" v for v in qtyOpt"></select>
-      </span>
-        <a class="btn btn-sm btn-primary" ng-click="ngCart.addItem(id, name, price, q, data)" ng-transclude></a>
-    </div>
-    <span ng-show="inCart()">
-    <br>
-    <p class="alert alert-info">This item is in your cart. <a ng-click="ngCart.removeItemById(id)" style="cursor: pointer;">Remove</a></p>
-    </span>
-  </div>
+	<div ng-hide="attrs.id">
+		<a class="btn btn-lg btn-primary" ng-disabled="true" ng-transclude></a>
+	</div>
+	<div ng-show="attrs.id">
+		<div>
+			<span ng-show="quantityMax">
+				<select name="quantity" id="quantity" ng-model="q" ng-options=" v for v in qtyOpt"></select>
+			</span>
+				<a class="btn btn-sm btn-primary" ng-click="ngCart.addItem(id, name, price, q, data)" ng-transclude></a>
+		</div>
+		<span ng-show="inCart()">
+		<br>
+		<p class="alert alert-info">This item is in your cart. <a ng-click="ngCart.removeItemById(id)" style="cursor: pointer;">Remove</a></p>
+		</span>
+	</div>
 </script>
 <script type="text/ng-template" id="template/ngCart/summary.html">
-  <span class="">{{ ngCart.getTotalItems() }}
-    <ng-pluralize count="ngCart.getTotalItems()" when="{1: 'item', 'other':'items'}"></ng-pluralize>
-    <br />{{ ngCart.totalCost() | currency:'€' }}
-  </span>
+	<span class="">{{ ngCart.getTotalItems() }}
+		<ng-pluralize count="ngCart.getTotalItems()" when="{1: 'item', 'other':'items'}"></ng-pluralize>
+		<br />{{ ngCart.totalCost() | currency:'€' }}
+	</span>
 </script>

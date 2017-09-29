@@ -1,6 +1,6 @@
-<div ng-switch on="vm.showNav">
+<div ng-switch on="vm.showNav" ng-controller="NavbarController as navbar">
   <div class="android-header mdl-layout__header mdl-layout__header--waterfall" ng-switch-when="true">
-    <div aria-expanded="false" role="button" tabindex="0" class="mdl-layout__drawer-button">
+    <div aria-expanded="false" role="button" tabindex="0" class="mdl-layout__drawer-button" ng-click="navbar.openNav()">
       <i class="material-icons"></i>
     </div>
     <div class="mdl-layout__header-row">
@@ -32,7 +32,7 @@
       </span>
     </div>
   </div>
-  <div class="android-drawer mdl-layout__drawer" aria-hidden="true" ng-switch-when="false">
+  <div class="android-drawer mdl-layout__drawer" aria-hidden="true" ng-switch-when="false" ng-mouseleave="navbar.navMouseLeave()">
     <span class="mdl-layout-title">
       <img class="android-logo-image" src="assets/images/westIreland-logo-white.png">
     </span>
